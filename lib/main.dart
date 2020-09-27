@@ -4,6 +4,7 @@ void main() {
   runApp(MaterialApp(
     title: "1st App",
     home: HomePage(),
+    theme: ThemeData(primarySwatch: Colors.purple),
   ));
 }
 
@@ -14,38 +15,52 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("App"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Align(
-          alignment: Alignment.bottomRight,
-          child: Container(
-            height: 400,
-            width: 200,
-            color: Colors.black,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.green,
-                ),
-                Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.blue,
+      body: Container(),
+
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            // DrawerHeader(
+            //     decoration: BoxDecoration(
+            //         gradient: LinearGradient(
+            //             colors: [Colors.red[300], Colors.amber])),
+            //     child: Text(
+            //       "DrawerHeader",
+            //       style: TextStyle(color: Colors.white),
+            //     )),
+            UserAccountsDrawerHeader(
+                accountName: Text("Vijay Gohel"),
+                accountEmail: Text("gohel.vijay.7@ldce.ac.in"),
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      "https://images.unsplash.com/photo-1543080853-556086153871?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"),
                 )
-              ],
+
+                //Image.network(
+                //"https://images.unsplash.com/photo-1543080853-556086153871?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"),
+                ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Account"),
+              subtitle: Text("Personal"),
+              trailing: Icon(Icons.edit),
             ),
-          ),
+            ListTile(
+              leading: Icon(Icons.mail),
+              title: Text("Email"),
+              subtitle: Text("gohel.vijay.7@ldce.ac.in"),
+              trailing: Icon(Icons.send),
+            )
+          ],
         ),
       ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.edit),
+      ),
+      //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
